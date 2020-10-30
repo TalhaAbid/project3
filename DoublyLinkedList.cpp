@@ -119,9 +119,12 @@ template<typename T>
 DoubleNode<T>* DoublyLinkedList<T>::getAtPos(const int &pos) const {
     int i = 1;
     DoubleNode<T>* currNode = headPtr;
-    while (i != pos && currNode != nullptr){
-        i++;
+    while(currNode != nullptr){
+        if (i == pos){
+            return currNode;
+        }
         currNode = currNode->getNext();
+        i++;
     }
     return currNode;
 }
