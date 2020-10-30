@@ -102,15 +102,16 @@ void DoublyLinkedList<T>::display() const {
     }
     int i = 1;
     while (currNode != nullptr){
-        if (i != listSize){
+        if (i == listSize){
+            std::cout << currNode->getItem();
+            std::cout << std::endl;
+            return;
+        }else {
             std::cout << currNode->getItem() << " ";
             currNode = currNode->getNext();
             i++;
-        } else {
-            std::cout << currNode->getItem();
         }
-    }
-    std::cout << std::endl;
+    } 
 }
 
 template<typename T>
