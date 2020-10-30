@@ -11,7 +11,7 @@ template<typename T>
 DoublyLinkedList<T>::DoublyLinkedList(const DoublyLinkedList<T>* aList){
     DoublyLinkedList<T> newList;
     int pos = 1;
-    while (newList.listSize != aList->listSize){
+    while (pos != aList->listSize){
         newList.insert(aList->getAtPos(pos)->getItem(), pos);
         pos++;
     }
@@ -100,25 +100,25 @@ void DoublyLinkedList<T>::display() const {
     if (currNode == nullptr){
         return;
     }
-    int i = 1;
+    std::cout << currNode->getItem();
+    currNode = currNode->getNext();
     while (currNode != nullptr){
-        if (i == listSize){
-            std::cout << currNode->getItem();
-            std::cout << std::endl;
-            return;
-        }else {
-            std::cout << currNode->getItem() << " ";
-            currNode = currNode->getNext();
-            i++;
-        }
-    } 
+        std::cout << " " << currNode->getItem();
+        currNode = currNode->getNext();
+    }
+    std::cout << std::endl;
 }
 
 template<typename T>
 void DoublyLinkedList<T>::displayBackwards() const {
     DoubleNode<T>* currNode = getAtPos(listSize);
+    if (currNode == nullptr){
+        return;
+    }
+    std::cout << currNode->getItem();
+    currNode = currNode->getPrevious();
     while (currNode != nullptr){
-        std::cout << currNode->getItem() << " ";
+        std::cout << " " << currNode->getItem();
         currNode = currNode->getPrevious();
     }
     std::cout << std::endl;
