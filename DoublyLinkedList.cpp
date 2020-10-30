@@ -102,6 +102,7 @@ void DoublyLinkedList<T>::display() const {
         std::cout << currNode->getItem() << " ";
         currNode = currNode->getNext();
     }
+    std::cout << std::endl;
 }
 
 template<typename T>
@@ -111,6 +112,7 @@ void DoublyLinkedList<T>::displayBackwards() const {
         std::cout << currNode->getItem() << " ";
         currNode = currNode->getPrevious();
     }
+    std::cout << std::endl;
 }
 
 
