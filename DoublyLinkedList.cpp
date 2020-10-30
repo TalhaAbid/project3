@@ -74,9 +74,9 @@ void DoublyLinkedList<T>::displayBackwards() const {
         return;
     }
     do {
-        std::cout << currNode->getitem() << std::endl;
-        currNode = currNode->getnext();
-    } while (currNode->getnext() != nullptr);
+        std::cout << currNode->getItem() << std::endl;
+        currNode = currNode->getNext();
+    } while (currNode->getNext() != nullptr);
 }
 
 
@@ -98,7 +98,7 @@ DoubleNode<T>* DoublyLinkedList<T>::getAtPos(const int &pos) const {
     DoubleNode<T>* currNode = headPtr;
     while (i != pos && currNode != nullptr){
         i++;
-        currNode = currNode->getNextPtr();
+        currNode = currNode->getNext();
     }
     return currNode;
 }
@@ -113,10 +113,10 @@ DoublyLinkedList<T> DoublyLinkedList<T>::interleave(const DoublyLinkedList<T> &a
     if (sizeList1 - sizeList2 == 0){
         while (i != sizeList1 + sizeList2){
             if (i % 2 != 0 ){
-                newList.insert(this->getAtPos(currPos)->getItem(), i);
+                newList.insert(getAtPos(currPos)->getItem(), i);
                 i++;
             } else {
-                newList.insert(a_list->getAtPos(currPos)->getItem(), i);
+                newList.insert(a_list.getAtPos(currPos)->getItem(), i);
                 i++;
                 currPos++;
             }
@@ -125,32 +125,32 @@ DoublyLinkedList<T> DoublyLinkedList<T>::interleave(const DoublyLinkedList<T> &a
         if (sizeList1 > sizeList2){
             while (i != sizeList2*2){
                 if (i % 2 != 0 ){
-                    newList.insert(this->getAtPos(currPos)->getItem(), i);
+                    newList.insert(getAtPos(currPos)->getItem(), i);
                     i++;
                 } else {
-                    newList.insert(a_list->getAtPos(currPos)->getItem(), i);
+                    newList.insert(getAtPos(currPos)->getItem(), i);
                     i++;
                     currPos++;
                 }
            } 
             while (i != sizeList1){
-                newList.insert(this->getAtPos(currPos)->getItem(), i);
+                newList.insert(getAtPos(currPos)->getItem(), i);
                 i++;
                 currPos++;
             }
         } else{
             while (i != sizeList1*2){
                 if (i % 2 != 0 ){
-                    newList.insert(this->getAtPos(currPos)->getItem(), i);
+                    newList.insert(getAtPos(currPos)->getItem(), i);
                     i++;
                 } else {
-                    newList.insert(a_list->getAtPos(currPos)->getItem(), i);
+                newList.insert(a_list.getAtPos(currPos)->getItem(), i);
                     i++;
                     currPos++;
                 }
             }
             while (i != sizeList2){
-                newList.insert(a_list->getAtPos(currPos)->getItem(), i);
+                newList.insert(a_list.getAtPos(currPos)->getItem(), i);
                 i++;
                 currPos++;
             }
