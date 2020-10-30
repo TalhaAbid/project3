@@ -48,7 +48,33 @@ bool DoublyLinkedList<T>::remove(const int &position){
 
 template<typename T>
 bool DoublyLinkedList<T>::insert(const T &item, const int &position){
-    
+    if (position == 1){
+        DoubleNode<T>* newHeadPtr = new DoubleNode<T>(item);
+        DoubleNode<T>* prevHeadPtr = headPtr;
+        newHeadPtr->setNext(prevHeadPtr);
+        newHeadPtr->setPrevious(nullptr);
+        prevHeadPtr->setPrevious(newHeadPtr);
+        headPtr == newHeadPtr;
+        listSize++;
+        return true;
+    }else if (position == listSize+1){
+        DoubleNode<T>* newEnd = new DoubleNode<T>(item);
+        DoubleNode<T>* oldEnd = getAtPos(listSize);
+        oldEnd->setNext(newEnd);
+        newEnd->setPrevious(oldEnd);
+        newEnd->setNext(nullptr);
+        listSize++;
+        return true;
+    }else {
+        DoubleNode<T>* newAtPos = new DoubleNode<T>(item);
+        DoubleNode<T>* prevAtPos = getAtPos(position);
+        newAtPos->setPrevious(prevAtPos->getPrevious());
+        newAtPos->setNext(prevAtPos);
+        prevAtPos->setPrevious(newAtPos);
+        listSize++;
+        return true;
+    }
+    return false;
 }
 template<typename T>
 bool DoublyLinkedList<T>::isEmpty() const {
@@ -63,17 +89,16 @@ void DoublyLinkedList<T>::display() const {
     }
     while (currNode != nullptr){
         std::cout << currNode->getItem() << " ";
+        currNode = currNode->getNext();
     }
 }
 
 template<typename T>
 void DoublyLinkedList<T>::displayBackwards() const {
-    DoubleNode<T>* currNode = headPtr;
-    if (currNode == nullptr){
-        return;
-    }
+    DoubleNode<T>* currNode = getAtPos(listSize);
     while (currNode != nullptr){
         std::cout << currNode->getItem() << " ";
+        currNode = currNode->getPrevious();
     }
 }
 
