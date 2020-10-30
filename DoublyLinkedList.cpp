@@ -52,6 +52,8 @@ bool DoublyLinkedList<T>::remove(const int &position){
         if (nodeAtPos->getNext() != nullptr){
             (nodeAtPos->getNext())->setPrevious(nodeAtPos->getPrevious());
         }
+        listSize--;
+        return true;
     }
     return false;
 }
