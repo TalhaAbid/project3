@@ -48,7 +48,7 @@ bool DoublyLinkedList<T>::remove(const int &position){
 
 template<typename T>
 bool DoublyLinkedList<T>::insert(const T &item, const int &position){
-    return true;
+    
 }
 template<typename T>
 bool DoublyLinkedList<T>::isEmpty() const {
@@ -61,10 +61,9 @@ void DoublyLinkedList<T>::display() const {
     if (currNode == nullptr){
         return;
     }
-    do {
-        std::cout << currNode->getItem() << std::endl;
-        currNode = currNode->getNext();
-    } while (currNode->getNext() != nullptr);
+    while (currNode != nullptr){
+        std::cout << currNode->getItem() << " ";
+    }
 }
 
 template<typename T>
@@ -73,10 +72,9 @@ void DoublyLinkedList<T>::displayBackwards() const {
     if (currNode == nullptr){
         return;
     }
-    do {
-        std::cout << currNode->getItem() << std::endl;
-        currNode = currNode->getNext();
-    } while (currNode->getNext() != nullptr);
+    while (currNode != nullptr){
+        std::cout << currNode->getItem() << " ";
+    }
 }
 
 
