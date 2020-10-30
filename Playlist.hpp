@@ -5,10 +5,12 @@
 #include "PlaylistItem.hpp"
 
 class Playlist : public DoublyLinkedList<PlaylistItem*>{
+public:
         /*
     Default Constructor
     Goal: Calls its parent constructor
-*/
+        */
+        
 Playlist();
 
 /*
