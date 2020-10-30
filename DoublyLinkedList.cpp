@@ -98,9 +98,15 @@ void DoublyLinkedList<T>::display() const {
     if (currNode == nullptr){
         return;
     }
+    int i = 1;
     while (currNode != nullptr){
-        std::cout << currNode->getItem() << " ";
-        currNode = currNode->getNext();
+        if (i != listSize){
+            std::cout << currNode->getItem() << " ";
+            currNode = currNode->getNext();
+            i++;
+        } else {
+            std::cout << currNode->getItem();
+        }
     }
     std::cout << std::endl;
 }
