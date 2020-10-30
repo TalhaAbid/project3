@@ -10,10 +10,6 @@ DoublyLinkedList<T>::DoublyLinkedList(): headPtr(nullptr), listSize(0){
 template<typename T>
 DoublyLinkedList<T>::DoublyLinkedList(const DoublyLinkedList<T>* aList){
     DoublyLinkedList<T> newList;
-    int pos = 1;
-    while (pos != aList->listSize){
-        newList.insert(aList->getAtPos(pos)->getItem(), pos);
-    }
 }
 
 template<typename T>
@@ -33,22 +29,12 @@ bool DoublyLinkedList<T>::remove(const int &position){
     if (isEmpty()){
         return false;
     }
-    if (position == 1){
-        DoubleNode<T>* oldHeadPtr = headPtr;
-        DoubleNode<T>* newHeadPtr = headPtr->getNext();
-        newHeadPtr->setPrevious(nullptr);
-        headPtr = newHeadPtr;
-        delete oldHeadPtr;
-        oldHeadPtr = nullptr;
-        listSize--;
-        return true;
-    }
     return true;
 }
 
 template<typename T>
 bool DoublyLinkedList<T>::insert(const T &item, const int &position){
-    if (position == 1){
+    if (position == 1 && !isEmpty()){
         DoubleNode<T>* newHeadPtr = new DoubleNode<T>(item);
         DoubleNode<T>* prevHeadPtr = headPtr;
         newHeadPtr->setNext(prevHeadPtr);
@@ -56,9 +42,15 @@ bool DoublyLinkedList<T>::insert(const T &item, const int &position){
         prevHeadPtr->setPrevious(newHeadPtr);
         headPtr == newHeadPtr;
         listSize++;
+        return true;   
+    } else if (isEmpty()){
+        DoubleNode<T>* newHeadPtr = new DoubleNode<T>(item);
+        headPtr = newHeadPtr;
+        listSize++;
         return true;
     }else if (position == listSize+1){
-        DoubleNode<T>* newEnd = new DoubleNode<T>(item);
+        DoubleNode<T>* newEnd;
+        newEnd->setItem(item);
         DoubleNode<T>* oldEnd = getAtPos(listSize);
         oldEnd->setNext(newEnd);
         newEnd->setPrevious(oldEnd);
